@@ -1,0 +1,198 @@
+/* =========================
+   ROOT VARIABLES (Refined Palette)
+========================= */
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --bg-page: #fbfcfe; /* Brighter, cleaner feel */
+  --border-light: #e2e8f0;
+  --border-focus: rgba(99, 102, 241, 0.4);
+  
+  /* Advanced Shadow Stack for Depth */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
+}
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+.login-page {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  /* Added a very subtle noise/grain texture effect for high-end feel */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.05) 0px, transparent 40%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-family: "Inter", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased; /* Makes fonts look sharper */
+}
+
+/* =========================
+   LOGIN CARD
+========================= */
+.login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  overflow: hidden;
+  animation: entrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle top highlight for the card */
+.login-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.4;
+}
+
+.login-card h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  font-size: 0.935rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* =========================
+   INPUTS (Modern Minimalist)
+========================= */
+.login-input,
+.login-select {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-light);
+  background: #ffffff;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-input::placeholder {
+  color: #94a3b8;
+}
+
+.login-input:hover {
+  border-color: #cbd5e1;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  /* Double-layered shadow: outer glow + inner shadow */
+  box-shadow: 
+    0 0 0 4px rgba(99, 102, 241, 0.08), 
+    0 1px 2px rgba(0,0,0,0.05);
+  background: #fff;
+}
+
+/* =========================
+   BUTTONS (High Contrast)
+========================= */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--text-main);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn:hover {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   DIVIDER
+========================= */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 12px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
+.divider span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2.5rem 1.5rem;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+  
+  .login-page {
+    background: #fff;
+    align-items: flex-start;
+  }
+}

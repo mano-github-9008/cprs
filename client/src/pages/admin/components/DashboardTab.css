@@ -1,0 +1,211 @@
+/* ===========================
+   DASHBOARD HEADER
+=========================== */
+.dashboard-header {
+    margin-bottom: 36px;
+  }
+  
+  .dashboard-header > h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 14px;
+  }
+  
+  /* ===========================
+     ADMIN WELCOME CARD
+  =========================== */
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 28px 32px;
+  }
+  
+  /* ===========================
+     LEFT CONTENT
+  =========================== */
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* ===========================
+     STATUS BADGE
+  =========================== */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  
+    background: #f0fdf4;
+    color: #047857;
+  
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  
+    padding: 6px 14px;
+    border-radius: 999px;
+    width: fit-content;
+  }
+  
+  .status-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+  }
+  
+  /* ===========================
+     WELCOME TEXT
+  =========================== */
+  .welcome-text {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.3;
+  }
+  
+  .admin-name {
+    color: #6366f1;
+    font-weight: 700;
+  }
+  
+  /* ===========================
+     DATE (RIGHT)
+  =========================== */
+  .header-date {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+  
+  /* ===========================
+     STATS GRID
+  =========================== */
+  .admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-top: 36px;
+  }
+  
+  /* ===========================
+     STAT CARD
+  =========================== */
+  .stat-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 28px;
+  
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .stat-card:hover {
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+  }
+  
+  /* Title */
+  .stat-card h3 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    margin-bottom: 10px;
+  }
+  
+  /* Value */
+  .stat-card p {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  
+  /* ===========================
+     HIGHLIGHT CARD
+  =========================== */
+  .stat-card.highlight {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+    border-color: #ddd6fe;
+  }
+  
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  @media (max-width: 768px) {
+    .admin-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+    }
+  
+    .header-date {
+      align-self: flex-end;
+    }
+  
+    .dashboard-header > h1 {
+      font-size: 1.6rem;
+    }
+  }
+
+  /* ===========================
+   STAT CARD BORDER ANIMATION
+=========================== */
+
+/* Wrapper effect using pseudo-element */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Animated border layer */
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    padding: 1px;
+  
+    background: linear-gradient(
+      120deg,
+      transparent,
+      #6366f1,
+      #a5b4fc,
+      transparent
+    );
+  
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  
+    /* Mask magic (important) */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  /* Hover trigger */
+  .stat-card:hover::before {
+    opacity: 1;
+  }
+  
+  /* Highlight card gets stronger accent */
+  .stat-card.highlight::before {
+    background: linear-gradient(
+      120deg,
+      transparent,
+      #4f46e5,
+      #818cf8,
+      transparent
+    );
+  }
+  
+  

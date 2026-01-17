@@ -1,0 +1,119 @@
+/* ===========================
+   AI BUILDER TAB
+=========================== */
+
+/* Wider card for builder */
+.action-card.wide {
+    max-width: 1000px;
+  }
+  
+  /* Divider */
+  .action-card hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 24px 0;
+  }
+  
+  /* ===========================
+     AUTOPILOT TOGGLE
+  =========================== */
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+  
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1e293b;
+  
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox input {
+    width: 16px;
+    height: 16px;
+    accent-color: #2563eb;
+  }
+  
+  /* ===========================
+     CATEGORY GRID
+  =========================== */
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+  
+    margin-bottom: 24px;
+  }
+  
+  .checkbox-group .checkbox {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+  
+  /* ===========================
+     SLOT INFO
+  =========================== */
+  .slot-info-box {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin: 20px 0;
+  }
+  
+  .slot-info {
+    font-size: 0.85rem;
+    color: #334155;
+  }
+  
+  /* ===========================
+     GENERATE BUTTON
+  =========================== */
+  .generate-btn {
+    width: 100%;
+    margin-top: 12px;
+  
+    background: #2563eb;
+    color: #ffffff;
+  
+    border: none;
+    border-radius: 14px;
+    padding: 14px 18px;
+  
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  
+  .generate-btn:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  
+  .generate-btn:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+  }
+  
+  /* ===========================
+     LOADING OVERLAY SUPPORT
+  =========================== */
+  .action-card {
+    position: relative;
+  }
+  

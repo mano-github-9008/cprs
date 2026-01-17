@@ -1,0 +1,127 @@
+/* ===========================
+   SIDEBAR CORE
+=========================== */
+.admin-sidebar {
+    width: 72px;
+    height: 100vh;
+    background: #f8fafc;
+    border-right: 1px solid #e5e7eb;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s ease;
+    overflow: hidden;
+  }
+  
+  /* Expand on hover */
+  .admin-sidebar:hover {
+    width: 240px;
+  }
+  
+  /* ===========================
+     HEADER
+  =========================== */
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6366f1;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.25s ease;
+  }
+  
+  /* Reveal logo text on hover */
+  .admin-sidebar:hover .logo-text {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* ===========================
+     NAV
+  =========================== */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  /* ===========================
+     BUTTON
+  =========================== */
+  .sidebar-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  /* Icon */
+  .sidebar-btn .icon {
+    font-size: 1.2rem;
+    min-width: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Label hidden by default */
+  .sidebar-btn .label {
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.25s ease;
+  }
+  
+  /* Reveal label on hover */
+  .admin-sidebar:hover .sidebar-btn .label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Hover */
+  .sidebar-btn:hover {
+    background: #f1f5f9;
+    color: #4f46e5;
+  }
+  
+  /* ===========================
+     ACTIVE STATE
+  =========================== */
+  .sidebar-btn.active {
+    background: #eef2ff;
+    color: #4f46e5;
+    font-weight: 600;
+  }
+  
+  .sidebar-btn.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    background: #6366f1;
+    border-radius: 4px;
+  }
+  

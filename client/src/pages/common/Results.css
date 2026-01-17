@@ -1,0 +1,138 @@
+/* ===========================
+   CONTAINER & TYPOGRAPHY
+=========================== */
+.results-container {
+  padding: 32px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #f7f9fd;
+  min-height: 100%;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #334155;
+}
+
+/* Page title */
+.results-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #1e293b;
+  border-bottom: 1px solid #e5eaf3;
+  padding-bottom: 12px;
+}
+
+/* ===========================
+   GRID LAYOUT (DESKTOP)
+=========================== */
+@media (min-width: 768px) {
+  .results-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .results-container h2,
+  .results-container h3,
+  .results-container ul,
+  .results-container .score {
+    grid-column: span 2;
+  }
+}
+
+/* ===========================
+   CHART CARDS
+=========================== */
+.chart-box {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid #e5eaf3;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chart-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+/* ===========================
+   SECTION HEADINGS
+=========================== */
+.results-container h3 {
+  margin-top: 32px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===========================
+   LISTS (STRENGTHS & CAREERS)
+=========================== */
+.results-container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.results-container li {
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border-left: 4px solid #93c5fd; /* pastel blue */
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* Career recommendations (soft green) */
+.results-container h3:nth-of-type(2) + ul li {
+  border-left-color: #86efac;
+  background: #f0fdf4;
+}
+
+/* ===========================
+   SCORE HIGHLIGHT (PASTEL)
+=========================== */
+.score {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #e0e7ff, #eff6ff);
+  color: #1e293b;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.15);
+}
+
+.score strong {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #4f46e5;
+  display: block;
+  margin-top: 6px;
+}
+
+/* ===========================
+   RESPONSIVE (MOBILE)
+=========================== */
+@media (max-width: 640px) {
+  .results-container {
+    padding: 20px;
+    display: block;
+  }
+
+  .score strong {
+    font-size: 1.9rem;
+  }
+}
