@@ -12,11 +12,16 @@ const batchRoutes = require("./routes/batchRoutes");
 const authRoutes = require("./routes/authRoutes");
 const protectedRoutes = require("./routes/protectedRoutes");
 const aiRoutes = require("./routes/aiRoutes");
+const studentRoutes = require("./routes/studentRoutes");
+const studentProfileRoutes = require("./routes/studentProfileRoutes");
+const institutionRoutes = require("./routes/institutionRoutes");
+const resultRoutes = require("./routes/resultRoutes");
+const superAdminRoutes = require("./routes/superAdminRoutes");
 
 const app = express();
 
 /* =========================
-   Database
+   Database (MongoDB Atlas)
 ========================= */
 connectDB();
 
@@ -25,7 +30,10 @@ connectDB();
 ========================= */
 app.use(
   cors({
-    origin: "http://localhost:5173", // Vite frontend
+    origin: [
+      "http://localhost:5173",
+      "https://cprs-psi.vercel.app"
+    ],
     credentials: true,
   })
 );
@@ -40,20 +48,23 @@ app.use("/api/protected", protectedRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/batch", batchRoutes);
 app.use("/api/ai", aiRoutes);
-app.use("/api/student", require("./routes/studentRoutes"));
-app.use("/api/student", require("./routes/studentProfileRoutes"));
-app.use("/api/institution", require("./routes/institutionRoutes"));
-app.use("/api/results", require("./routes/resultRoutes"));
-app.use("/api/superadmin", require("./routes/superAdminRoutes"));
+app.use("/api/student", studentRoutes);
+app.use("/api/student", studentProfileRoutes);
+app.use("/api/institution", institutionRoutes);
+app.use("/api/results", resultRoutes);
+app.use("/api/superadmin", superAdminRoutes);
 
 /* =========================
-   HTTP + WebSocket Server
+   HTTP + Socket.IO
 ========================= */
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://cprs-psi.vercel.app"
+    ],
     methods: ["GET", "POST"],
   },
 });
@@ -66,7 +77,7 @@ io.on("connection", (socket) => {
   });
 });
 
-/* Make io available everywhere */
+/* Make io accessible in routes */
 app.set("io", io);
 
 /* =========================
