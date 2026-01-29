@@ -1,0 +1,101 @@
+/* ===========================
+    BATCH TAB – PREMIUM THEME
+=========================== */
+
+/* Main Container inherited from .action-card */
+.batch-time-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; /* Increased gap for a more spacious feel */
+  margin-bottom: 8px;
+}
+
+/* Specific styling for Batch Inputs */
+.action-card input[type="text"],
+.action-card input[type="number"],
+.action-card input[type="time"],
+.action-card select {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+
+  border-radius: 12px;
+  border: 2px solid #f1f5f9;
+  background: #f8fafc;
+
+  font-size: 1rem;
+  color: #0f172a;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Royal Blue Focus State */
+.action-card input:focus,
+.action-card select:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #1e3a8a; /* Royal Blue */
+  box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Improve number input appearance */
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ===========================
+    PRIMARY ACTION BUTTON (AMBER)
+=========================== */
+.action-card button {
+  width: 100%;
+  margin-top: 16px;
+
+  /* Vibrant Amber Core */
+  background: #f59e0b; 
+  color: #ffffff;
+
+  border: none;
+  border-radius: 14px;
+  padding: 16px 20px;
+
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+
+  /* Premium Elevation Shadow */
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.35);
+  transition: all 0.3s ease;
+}
+
+.action-card button:hover {
+  background: #d97706; /* Deep Amber */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(217, 119, 6, 0.45);
+}
+
+.action-card button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ===========================
+    RESPONSIVE DESIGN
+=========================== */
+@media (max-width: 640px) {
+  .batch-time-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .action-card {
+    padding: 24px;
+  }
+}

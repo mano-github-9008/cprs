@@ -17,67 +17,79 @@ const ProfileSchema = new mongoose.Schema(
 );
 
 /* ================= USER SCHEMA ================= */
-const UserSchema = new mongoose.Schema({
-  /* ================= BASIC AUTH ================= */
-  name: {
-    type: String,
-    required: true,
-  },
+const UserSchema = new mongoose.Schema(
+  {
+    /* ================= BASIC AUTH ================= */
+    name: {
+      type: String,
+      required: true,
+    },
 
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
 
-  password: {
-    type: String,
-    required: true,
-  },
+    password: {
+      type: String,
+      required: true,
+    },
 
-  role: {
-    type: String,
-    enum: ["student", "admin", "superadmin"],
-    default: "student",
-  },
+    role: {
+      type: String,
+      enum: ["student", "admin", "superadmin"],
+      default: "student",
+    },
 
-  /* ================= STUDENT PROFILE ================= */
-  profile: ProfileSchema,
+    /* ================= OTP RESET FIELDS ================= */
+    resetOTP: {
+      type: String,
+      default: null,
+    },
 
-  isProfileComplete: {
-    type: Boolean,
-    default: false,
-  },
+    resetOTPExpires: {
+      type: Date,
+      default: null,
+    },
 
-  /* ================= INSTITUTION ================= */
-  institutionId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Institution",
-    default: null,
-  },
+    /* ================= STUDENT PROFILE ================= */
+    profile: ProfileSchema,
 
-  /* ================= BATCH ASSIGNMENT ================= */
-  batchId: {
-    type: String, // e.g. "BATCH-AI-001"
-    default: null,
-  },
+    isProfileComplete: {
+      type: Boolean,
+      default: false,
+    },
 
-  batchRef: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Batch",
-    default: null,
-  },
+    /* ================= INSTITUTION ================= */
+    institutionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Institution",
+      default: null,
+    },
 
-  /* ================= STATUS ================= */
-  isActive: {
-    type: Boolean,
-    default: false,
-  },
+    /* ================= BATCH ASSIGNMENT ================= */
+    batchId: {
+      type: String, // e.g. "BATCH-AI-001"
+      default: null,
+    },
 
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    batchRef: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Batch",
+      default: null,
+    },
+
+    /* ================= STATUS ================= */
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
   },
-});
+  { 
+    // ✅ Built-in timestamps are more efficient for real-time sorting
+    timestamps: true 
+  }
+);
 
 module.exports = mongoose.model("User", UserSchema);

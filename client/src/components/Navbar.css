@@ -1,0 +1,308 @@
+/* --- 1. Global Variables & Base Reset --- */
+:root {
+  /* Brand Palette (Aligned with Signup Page) */
+  --primary: #0f172a;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-amber: #f59e0b;
+  
+  /* UI Colors */
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-border: rgba(226, 232, 240, 0.8);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --danger: #e11d48;
+  --border: #f1f5f9;
+  
+  /* Effects */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-blur: blur(12px);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.navbar {
+  position: fixed; /* Must be fixed from the start to prevent jumping */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: var(--nav-bg);
+  backdrop-filter: var(--glass-blur);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid var(--nav-border);
+  transition: all 0.3s ease;
+}
+
+.navbar-scrolled {
+  height: 64px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+  max-width: 1240px;
+  width: 100%;
+  height: 100%; /* Ensures children can center vertically */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Crucial for vertical alignment */
+}
+
+/* --- 3. Logo & Brand Animation --- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Prevents logo from squishing on mobile */
+}
+
+.nav-logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-badge {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo-icon, 
+.logo-text, 
+.ai-accent {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 50%, var(--accent-amber) 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 6s ease infinite;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.logo-icon { font-size: 1.2rem; text-transform: uppercase; }
+.logo-text { font-size: 1.5rem; margin-left: -4px; }
+
+.logo-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: var(--accent-purple);
+  filter: blur(25px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* --- 4. Desktop Navigation --- */
+.nav-desktop { 
+  display: flex; 
+  align-items: center; 
+  height: 100%;
+}
+
+.nav-links-guest, 
+.nav-links-auth {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active { color: var(--primary); }
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+  border-radius: 2px;
+}
+
+.btn-signin {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 50%, var(--accent-amber) 100%);
+  background-size: 200% auto;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  padding: 10px 24px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+  animation: gradientFlow 6s ease infinite;
+  transition: var(--transition);
+}
+
+.admin-link {
+  color: var(--accent-purple);
+  background: rgba(124, 58, 237, 0.08);
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+/* --- 5. Profile & Logout --- */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+  height: 32px;
+}
+
+.user-avatar {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--primary), #334155);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 0.75rem; font-weight: 800;
+  border: 2px solid white;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid #fee2e2;
+  color: var(--danger);
+  padding: 8px 16px;
+  border-radius: 10px;
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 600; cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-logout:hover { background: #fff1f2; border-color: #fca5a5; }
+
+/* --- 6. Mobile Experience --- */
+.mobile-menu-btn {
+  display: none;
+  background: rgba(241, 245, 249, 0.8);
+  border: 1px solid var(--nav-border);
+  border-radius: 10px;
+  width: 40px; 
+  height: 40px;
+  color: var(--primary);
+  align-items: center; 
+  justify-content: center;
+  font-size: 1.4rem; 
+  cursor: pointer;
+  padding: 0; /* Standardizes icon centering */
+}
+
+.mobile-menu {
+  position: fixed; 
+  top: 72px; /* Set to match desktop navbar height */
+  left: 0; 
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  height: 0; 
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0; 
+  z-index: 999;
+}
+
+.mobile-menu.open { 
+  height: calc(100vh - 72px); 
+  opacity: 1; 
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-content { padding: 1.5rem; display: flex; flex-direction: column; gap: 12px; }
+
+.mobile-user-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px; background: rgba(15, 23, 42, 0.04); border-radius: 16px;
+}
+
+.user-avatar-badge {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--primary), #334155);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 800;
+}
+
+.user-role-badge {
+  font-size: 0.7rem; background: var(--accent-purple);
+  color: white; padding: 2px 8px; border-radius: 6px;
+  text-transform: uppercase; font-weight: 700;
+}
+
+.mobile-link {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; padding: 14px 16px; border-radius: 12px;
+  color: var(--text-main); font-weight: 600;
+}
+
+.mobile-link.active { background: rgba(79, 70, 229, 0.08); color: var(--accent-purple); }
+
+.mobile-btn-signin {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 50%, var(--accent-amber) 100%);
+  background-size: 200% auto;
+  color: white !important; 
+  -webkit-text-fill-color: white !important;
+  text-align: center;
+  padding: 16px; border-radius: 14px; font-weight: 700;
+  animation: gradientFlow 6s ease infinite;
+}
+
+.mobile-btn-logout {
+  width: 100%; padding: 16px; background: #fff;
+  color: var(--danger); border: 1px solid #fee2e2;
+  border-radius: 14px; font-weight: 700; cursor: pointer;
+}
+
+/* --- 7. Animations & Responsive --- */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 868px) {
+  .nav-desktop { display: none; }
+  .mobile-menu-btn { display: flex; }
+  
+  /* Standardize mobile navbar height for tighter alignment */
+  .navbar { height: 64px; }
+  .mobile-menu { top: 64px; }
+  .mobile-menu.open { height: calc(100vh - 64px); }
+  
+  .navbar-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text { display: none; } /* Show only Icon-style logo on tiny screens */
+  .nav-logo { gap: 4px; }
+}

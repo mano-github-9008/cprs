@@ -1,0 +1,604 @@
+/* --- 1. Global Home Reset & Variables --- */
+:root {
+  --primary-dark: #0f172a;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-amber: #f59e0b;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-light: #f8fafc;
+  --border-color: rgba(226, 232, 240, 0.8);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.home {
+  position: relative;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  color: var(--primary-dark);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* --- 2. Ambient Background Glow --- */
+.bg-glow {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- 3. Hero Layout --- */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 5% 40px;
+  position: relative;
+  z-index: 1;
+  /* Very light, professional Sunrise Gradient */
+  background: linear-gradient(
+    135deg, 
+    rgba(223, 186, 255, 0.471) 0%,   /* Very soft Rose Pink */
+    rgba(255, 247, 215, 0.4) 100%  /* Very soft Yellow/Amber */
+  );
+}
+
+.hero-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+}
+
+.hero-text {
+  flex: 1.2;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 25px;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 8px 16px;
+  background: rgba(37, 99, 235, 0.06);
+  color: var(--accent-blue);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  letter-spacing: 0.02em;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.04em;
+  color: var(--primary-dark);
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 50%, var(--accent-amber) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+/* --- 4. Hero Visuals & Orbitals (Modern Polish) --- */
+.hero-visual {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* Adding a depth glow to bridge the pink/yellow theme */
+  background: radial-gradient(
+    circle, 
+    rgba(251, 113, 133, 0.05) 0%, 
+    rgba(251, 191, 36, 0.03) 50%, 
+    transparent 70%
+  );
+}
+
+.orbit-container {
+  position: relative;
+  width: 480px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- THE NUCLEUS --- */
+.nucleus {
+  width: 115px;
+  height: 115px;
+  background: #ffffff;
+  border-radius: 35% 65% 65% 35% / 30% 30% 70% 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Shadow tuned for the lighter background */
+  box-shadow: 
+    0 15px 35px rgba(15, 23, 42, 0.08),
+    inset 0 0 15px rgba(251, 113, 133, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 1);
+  z-index: 10;
+  animation: blob 8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+}
+
+/* --- THE ORBIT PATHS --- */
+.orbit-path {
+  position: absolute;
+  /* Softened lines to match the new light theme */
+  border: 1.5px solid rgba(123, 0, 255, 0.8);
+  border-radius: 50%;
+}
+
+.orbit-1 {
+  width: 270px;
+  height: 270px;
+  animation: rotateClockwise 30s linear infinite;
+}
+
+.orbit-2 {
+  width: 450px;
+  height: 450px;
+  animation: rotateCounterClockwise 50s linear infinite;
+  border-style: dashed;
+}
+
+/* --- GLASS ICONS --- */
+.floating-icon {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 1);
+  /* Color matches the professional Rose/Amber vibe */
+  color: #e11d48; /* Deep Rose for contrast */
+  font-size: 1.4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-icon:hover {
+  transform: scale(1.15) !important;
+  color: #d97706; /* Shifts to Amber on hover */
+  background: #ffffff;
+  box-shadow: 0 15px 30px rgba(251, 113, 133, 0.2);
+}
+
+/* Positioning */
+.icon-job { top: -27px; left: 50%; transform: translateX(-50%); }
+.icon-grad { bottom: -27px; left: 50%; transform: translateX(-50%); }
+.icon-book { top: 50%; left: -27px; transform: translateY(-50%); }
+.icon-code { top: 50%; right: -27px; transform: translateY(-50%); }
+
+/* --- Text/Para Adjustments --- */
+.hero p {
+  color: #64748b; /* Slate-500 for better readability on light pink/yellow */
+  line-height: 1.6;
+}
+
+/* --- Animations --- */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08), 0 0 15px rgba(251, 113, 133, 0.1); }
+  50% { box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08), 0 0 30px rgba(251, 191, 36, 0.2); }
+}
+
+@keyframes blob {
+  0%, 100% { border-radius: 35% 65% 65% 35% / 30% 30% 70% 70%; }
+  50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
+}
+
+/* Smooth Rotations */
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounterClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* --- 5. Stats & Buttons --- */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.btn {
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.btn.primary {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--primary-dark);
+  border: 1px solid var(--border-color);
+}
+
+.btn.secondary:hover {
+  background: var(--bg-light);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 32px;
+}
+
+.stat-item strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--primary-dark);
+}
+
+.stat-item span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- 6. Features Grid --- */
+.features {
+  padding: 120px 5%;
+  background: var(--bg-light);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.feature-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.feature-card {
+  padding: 48px;
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-purple);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.1);
+}
+
+.icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: rgba(124, 58, 237, 0.05);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent-purple);
+  margin-bottom: 28px;
+}
+
+
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+/* --- 8. Responsive --- */
+@media (max-width: 1100px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-stats, .hero-buttons {
+    justify-content: center;
+  }
+  .hero-visual {
+    margin-top: 40px;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-visual { display: none; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .btn { justify-content: center; }
+}
+
+/* --- 1. Main Footer Wrapper --- */
+.home-footer {
+  background: #ffffff;
+  padding: 100px 5% 40px;
+  border-top: 1px solid var(--nav-border);
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Modern Compact CTA Section --- */
+.footer-cta {
+  /* Rich deep-slate gradient with a hint of purple */
+  background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 100%);
+  border-radius: 24px; /* Reduced from 32px/40px for a tighter look */
+  padding: 60px 40px;  /* Reduced padding for better vertical rhythm */
+  text-align: center;
+  color: white;
+  margin: 0 5% 80px; 
+  position: relative;
+  overflow: hidden;
+  
+  /* Precision Border - the hallmark of modern UI */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Subtle, sophisticated background aura */
+.cta-glow {
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle, 
+    rgba(37, 99, 235, 0.12) 0%,   /* Blue */
+    rgba(124, 58, 237, 0.08) 50%,  /* Purple */
+    transparent 80%
+  );
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-cta h2 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem); /* Reduced size for elegance */
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  color: #f8fafc;
+}
+
+.footer-cta p {
+  position: relative;
+  z-index: 1;
+  color: #94a3b8; /* Slate-400 for a softer professional look */
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* The High-Contrast Button */
+.footer-cta .btn.primary {
+  position: relative;
+  z-index: 1;
+  /* Clean white button with your accent blue as text */
+  background: #ffffff;
+  color: #0f172a;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.footer-cta .btn.primary:hover {
+  transform: translateY(-2px);
+  background: #f1f5f9;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Clean SVG Icon alignment */
+.footer-cta .btn.primary svg {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .footer-cta {
+    padding: 48px 24px;
+    margin: 0 16px 60px;
+  }
+  .footer-cta h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* --- 3. Brand & Navigation Grid --- */
+.footer-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  padding-bottom: 60px;
+}
+
+.footer-brand {
+  flex: 1.2;
+}
+
+.footer-brand .nav-logo {
+  margin-bottom: 24px;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 320px;
+}
+
+.footer-grid {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-column h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 24px;
+  letter-spacing: 0.08em;
+}
+
+.footer-column a {
+  display: block;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.footer-column a:hover {
+  color: var(--accent-purple);
+  transform: translateX(6px);
+}
+
+/* --- 4. Bottom Bar & Status Indicator --- */
+.footer-bottom {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-subtle);
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981; /* Professional Emerald */
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+  animation: statusPulse 2s infinite;
+}
+
+/* --- 5. Animations & Responsive --- */
+@keyframes statusPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 1024px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 60px;
+  }
+  .footer-brand {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+  .footer-cta {
+    padding: 60px 24px;
+    border-radius: 24px;
+  }
+}

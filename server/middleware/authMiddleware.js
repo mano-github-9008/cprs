@@ -12,7 +12,7 @@ const protect = async (req, res, next) => {
   }
 
   if (!token) {
-    return res.status(401).json({ message: "Not authorized, no token" });
+    return res.status(401).json({ success: false, message: "Not authorized, no token" });
   }
 
   try {
@@ -23,7 +23,7 @@ const protect = async (req, res, next) => {
     );
 
     if (!user) {
-      return res.status(401).json({ message: "User not found" });
+      return res.status(401).json({ success: false, message: "User not found" });
     }
 
     req.user = {
@@ -41,7 +41,7 @@ const protect = async (req, res, next) => {
     next();
   } catch (err) {
     console.error("AUTH ERROR:", err.message);
-    return res.status(401).json({ message: "Token invalid" });
+    return res.status(401).json({ success: false, message: "Token invalid" });
   }
 };
 

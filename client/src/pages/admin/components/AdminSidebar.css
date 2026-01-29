@@ -1,0 +1,124 @@
+/* ===========================
+   SIDEBAR CORE (Refined)
+=========================== */
+.admin-sidebar {
+  width: 76px; /* Slightly wider for better icon centering */
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid rgba(0, 0, 0, 0.05); /* Softer border */
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  /* Smoother transition curve */
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+  overflow: hidden;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.02);
+  position: relative;
+  z-index: 100;
+}
+
+.admin-sidebar:hover {
+  width: 260px;
+  box-shadow: 12px 0 40px rgba(15, 23, 42, 0.06);
+}
+
+/* ===========================
+   HEADER (Branded)
+=========================== */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  margin-bottom: 32px;
+}
+
+.logo-icon {
+  font-size: 1.6rem;
+  min-width: 32px;
+  display: flex;
+  justify-content: center;
+  /* Applying the Rose-Yellow brand gradient */
+  background: linear-gradient(135deg, #e11d48, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.1));
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a; /* Slate-900 */
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.admin-sidebar:hover .logo-text {
+  opacity: 1;
+}
+
+/* ===========================
+   BUTTONS (Sleek Interactivity)
+=========================== */
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 14px; /* More rounded for modern feel */
+  cursor: pointer;
+  color: #64748b; /* Slate-500 */
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.sidebar-btn .icon {
+  font-size: 1.3rem;
+  min-width: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-btn .label {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.admin-sidebar:hover .sidebar-btn .label {
+  opacity: 1;
+}
+
+/* Hover: Soft Rose Glow */
+.sidebar-btn:hover {
+  background: rgba(225, 29, 72, 0.04);
+  color: #e11d48;
+}
+
+/* ===========================
+   ACTIVE STATE (Gradient Accent)
+=========================== */
+.sidebar-btn.active {
+  background: rgba(217, 119, 6, 0.08); /* Amber-50 tint */
+  color: #d97706; /* Amber-600 */
+}
+
+/* The modern "floating pill" indicator */
+.sidebar-btn.active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 10px;
+  bottom: 10px;
+  width: 5px;
+  background: linear-gradient(to bottom, #e11d48, #d97706);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 2px 0 8px rgba(225, 29, 72, 0.2);
+}

@@ -1,0 +1,57 @@
+.admin-layout {
+  display: flex;
+  margin-top: 72px; /* CRITICAL: Matches Navbar height so text isn't hidden */
+  height: calc(100vh - 72px); /* Fill remaining screen height */
+  overflow: hidden;
+}
+
+.admin-sidebar {
+  width: 72px;
+  height: 100%; /* Relative to admin-layout */
+  background: #f8fafc;
+  border-right: 1px solid #e5e7eb;
+  flex-shrink: 0; /* Prevents sidebar from squashing */
+  transition: width 0.25s ease;
+  overflow: hidden;
+  /* Remove position: fixed here; let flexbox handle it */
+}
+
+.admin-sidebar:hover {
+  width: 240px;
+}
+
+/* ===========================
+   MAIN CONTENT (RIGHT)
+=========================== */
+.admin-main {
+  flex: 1; /* Takes remaining width */
+  height: 100%;
+  overflow-y: auto; /* Independent scroll for the dashboard text */
+  padding: 32px 40px;
+  background: #ffffff;
+}
+
+/* Smooth scrolling */
+.admin-main {
+  scroll-behavior: smooth;
+}
+
+/* ===========================
+   RESPONSIVE (MOBILE)
+=========================== */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .admin-main {
+    height: auto;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,149 @@
+/* ===========================
+   INSTITUTION TAB – ROYAL & AMBER
+=========================== */
+
+.action-card {
+  background: #ffffff;
+  border: 1px solid rgba(30, 58, 138, 0.1); /* Subtle Royal Blue tint */
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 760px;
+  
+  /* Depth using Royal Blue shadows */
+  box-shadow: 
+    0 10px 15px -3px rgba(30, 58, 138, 0.04), 
+    0 4px 6px -2px rgba(30, 58, 138, 0.02);
+  
+  transition: all 0.3s ease;
+}
+
+/* ===========================
+    TITLE & ACCENTS
+=========================== */
+.action-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e3a8a; /* Royal Blue 900 */
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* The "Vibrant Amber" Accent Bar */
+.action-card h3::before {
+  content: "";
+  width: 6px;
+  height: 24px;
+  background: #f59e0b; /* Vibrant Amber */
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+/* ===========================
+    FORM INPUTS
+=========================== */
+.action-card label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e40af; /* Royal Blue 800 */
+  margin-bottom: 8px;
+  margin-left: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.action-card input {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+
+  border-radius: 12px;
+  border: 2px solid #f1f5f9; 
+  background: #f8fafc; 
+
+  font-size: 1rem;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+.action-card input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #1e3a8a; /* Royal Blue Focus */
+  box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+}
+
+/* ===========================
+    BUTTON – THE AMBER CTA
+=========================== */
+.action-card button {
+  width: 100%;
+  margin-top: 12px;
+
+  /* High-Contrast Vibrant Amber */
+  background: #f59e0b; 
+  color: #ffffff;
+
+  border: none;
+  border-radius: 14px;
+  padding: 16px 24px;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  
+  /* Amber-specific glow */
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.39);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action-card button:hover {
+  background: #d97706; /* Darker Amber */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.45);
+}
+
+.action-card button:active {
+  transform: scale(0.98);
+}
+
+/* ===========================
+    INSTITUTION INFO (DISPLAY)
+=========================== */
+.institution-info {
+  background: #eff6ff; /* Very light Royal Blue tint */
+  border: 1.5px solid rgba(30, 58, 138, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.institution-info p {
+  font-size: 1rem;
+  color: #1e3a8a;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(30, 58, 138, 0.05);
+  padding-bottom: 12px;
+}
+
+.institution-info p:last-child {
+  border-bottom: none;
+}
+
+.institution-info strong {
+  font-weight: 800;
+  color: #f59e0b; /* Amber Labels */
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
